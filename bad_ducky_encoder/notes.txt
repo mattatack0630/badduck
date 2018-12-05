@@ -1,0 +1,101 @@
+TextInput
+-String 
+-PrintFileASCII
+-PrintFileHEX
+
+Comments
+-Rem
+
+Wait
+-Delay
+
+Flags
+-DefualtDelay
+
+ControlKeys, delimeted by spaces, one line = one command
+-GUI
+-Return
+-Ctrl/LeftCtrl/RightCtrl 
+-Alt/LeftAlt/RightAlt
+-Shift/LeftShift/RightShift
+-LeftKey/Left
+-RightKey/Right
+-DownKey/Down
+-UpKey/Up 
+-Delete
+-Esc
+-Fn
+-F1-F12
+-PrintScreen
+-Home
+-End
+-PageUp
+-PageDown
+-Insert
+-CapsLock
+-Backspace
+-NumLock // Maybe?
+-Space // Maybe?
+
+1.) Read until first space to get headingCommand 
+2.) Identify Line Type based on headingCommand
+3.) Split the line based on spaces into arguements, presevering strings as one arguement each
+3.) Pass line into Type handler
+
+a.) ControlKeyHandler seperates by spaces and uses a lookup table to identify which function to use, if none are found it just prints as ascii
+b.) StringHandler takes the "" paramter and uses it to either read in a file or use a raw string to print
+c.) DelayHandler takes the next integer and uses the delay function to wait
+d.) RemHandler simply ignores the line
+e.) FlagHandler takes the next argument and sets it to that
+
+Handlers will need two methods
+-handle(arg1, arg2[]);
+-is_type(arg);
+
+SubString stuct
+-base_string - pointer to string this is based on 
+-start_index - index of substring start
+-length - length in chars
+-equals()?
+
+// Maybe this is getting too complex
+
+
+String
+-GetIndexOfChar
+-GetSubString 
+-equals
+-concat
+-toInt
+-toDouble
+
+-delay E0
+-print E1
+-press E2
+-release E3
+-write E4
+-printFromFile E5
+
+D2 80 					// Press Ctrl
+D2 81 					// Press Shift
+D2 82					// Press Alt
+D3						// Release
+D1 00 00 00 05 48 65 6C 6C 6F  	// Print 5 characters, Hello
+D2 B0 					// Press Enter
+D0 00 00 00 64 			// Delay 100ms
+D5 00 00 00 09 48 65 6C 6C 6F 2E 74 78 74
+
+D5 00 00 00 0F 54 65 73 74 41 6E 6F 74 68 65 72 2E 74 78 74
+
+D280D281D282D3D10000000548656C6C6FD5000000077474312e747874
+
+
+
+
+e2 83
+e2 80
+e2 81 72 6f 61 73 74 
+e3 
+e0 00 00 00 64
+e1 00 00 00 22 54686973206973206120537472696e6720313030204b45595f4c4546545f4354524c
+e5 00 00 00 08 66696c652e747874

@@ -1,0 +1,5 @@
+KEY_LEFT_GUI KEY_LEFT_CTRL KEY_LEFT_SHIFT roast
+DELAY 100
+STRING This is a String 100 KEY_LEFT_CTRL
+FILE file.txt
+REM This is a comment
